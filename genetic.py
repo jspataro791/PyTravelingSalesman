@@ -14,6 +14,12 @@ from pprint import pprint
 from numba import jit  # for speed
 
 #=========================================================================
+# # GLOBALS
+#=========================================================================
+
+_PRINT_INTERVAL = 100
+
+#=========================================================================
 # # FUNCTIONS
 #=========================================================================
 
@@ -125,7 +131,7 @@ def traveling_salesman(generations=5000, population_size=100):
         population[-1] = child1
         population[-2] = child2
     
-        if not n % 100:
+        if not n % _PRINT_INTERVAL:
             print('Generation %i, distance %f' % (n, compute_total_destination_distance(population[0])))
     
     print('FINISHED: Generation %i, distance %f' % (n, compute_total_destination_distance(population[0])))
